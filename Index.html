@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NSE Paper Trader</title>
+
+<style>
+body{
+    background:#0d1117;
+    color:white;
+    font-family:Arial,sans-serif;
+    padding:20px;
+}
+
+.card{
+    background:#161b22;
+    padding:20px;
+    border-radius:10px;
+    margin-top:20px;
+}
+
+.price{
+    font-size:32px;
+    color:#00ff88;
+    font-weight:bold;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>NSE Paper Trader</h1>
+
+<div class="card">
+    <h2>NIFTY</h2>
+    <div class="price" id="niftyPrice">Loading...</div>
+</div>
+
+<script>
+
+async function loadData(){
+
+    const res = await fetch(
+      "https://long-breeze-1767.yoyo661999kumar.workers.dev"
+    );
+
+    const data = await res.json();
+
+    document.getElementById("niftyPrice").innerText =
+        data.NIFTY ? data.NIFTY.price : "No Data";
+}
+
+loadData();
+
+</script>
+
+</body>
+</html>
